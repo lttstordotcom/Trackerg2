@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Workout</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="box">
+    <h2>Add a Workout</h2>
+    <p><a href="/workouts">Back to List</a></p>
+
+    <form th:action="@{/workouts}" th:object="${workout}" method="post">
+        <label>Date:</label>
+        <input type="date" th:field="*{workoutDate}" required>
+
+        <label>Distance in meters:</label>
+        <input type="number" th:field="*{distance}" placeholder="2000" required>
+
+        <label>Split (ex 2:05):</label>
+        <input type="text" th:field="*{split}" required>
+
+        <label>Stroke rate:</label>
+        <input type="number" th:field="*{strokeRate}" placeholder="26" required>
+
+        <button type="submit">Save Workout</button>
+    </form>
+</div>
+</body>
+</html>
