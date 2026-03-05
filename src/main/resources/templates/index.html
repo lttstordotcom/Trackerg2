@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trackerg34 Style Home</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="page-wrap">
+    <header class="topbar">
+        <h1>Trackerg34</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/workouts">Workouts</a>
+            <a href="/workouts/new">Add Workout</a>
+            <a href="/h2-console">DB</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Rowing Workout Tracker</h2>
+        <p>Keep your rows in one place and check your progress each week.</p>
+        <a class="btn" href="/workouts">Open Workout List</a>
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <h3>Track Distance</h3>
+            <p>Save meters for every session.</p>
+        </div>
+        <div class="card">
+            <h3>Track Split</h3>
+            <p>Write your split like 2:05.</p>
+        </div>
+        <div class="card">
+            <h3>Track Rate</h3>
+            <p>Store your stroke rate number.</p>
+        </div>
+    </section>
+</div>
+</body>
+</html>
