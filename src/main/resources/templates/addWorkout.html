@@ -13,15 +13,19 @@
     <form th:action="@{/workouts}" th:object="${workout}" method="post">
         <label>Date:</label>
         <input type="date" th:field="*{workoutDate}" required>
+        <p class="error" th:if="${#fields.hasErrors('workoutDate')}" th:errors="*{workoutDate}"></p>
 
         <label>Distance in meters:</label>
         <input type="number" th:field="*{distance}" placeholder="2000" required>
+        <p class="error" th:if="${#fields.hasErrors('distance')}" th:errors="*{distance}"></p>
 
         <label>Split (ex 2:05):</label>
         <input type="text" th:field="*{split}" required>
+        <p class="error" th:if="${#fields.hasErrors('split')}" th:errors="*{split}"></p>
 
         <label>Stroke rate:</label>
         <input type="number" th:field="*{strokeRate}" placeholder="26" required>
+        <p class="error" th:if="${#fields.hasErrors('strokeRate')}" th:errors="*{strokeRate}"></p>
 
         <button type="submit">Save Workout</button>
     </form>

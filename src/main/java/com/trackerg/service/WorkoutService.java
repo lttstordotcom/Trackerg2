@@ -16,7 +16,7 @@ public class WorkoutService {
     }
 
     public List<Workout> getAllWorkouts() {
-        return workoutRepository.findAll();
+        return workoutRepository.findAllByOrderByWorkoutDateDesc();
     }
 
     // save one workout from form input

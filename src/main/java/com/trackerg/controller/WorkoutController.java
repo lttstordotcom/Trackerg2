@@ -2,8 +2,10 @@ package com.trackerg.controller;
 
 import com.trackerg.model.Workout;
 import com.trackerg.service.WorkoutService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +40,11 @@ public class WorkoutController {
 
     // save workout then go back to list
     @PostMapping("/workouts")
-    public String addWorkout(@ModelAttribute Workout workout) {
+    public String addWorkout(@Valid @ModelAttribute Workout workout, BindingResult result) {
+        if (result.hasErrors()) {
+            return "addWorkout";
+        }
+
         workoutService.saveWorkout(workout);
         return "redirect:/workouts";
     }
