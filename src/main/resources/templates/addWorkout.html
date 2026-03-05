@@ -6,29 +6,40 @@
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<div class="box">
-    <h2>Add a Workout</h2>
-    <p><a href="/workouts">Back to List</a></p>
+<div class="page-wrap">
+    <header class="topbar">
+        <h1>Trackerg34</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/workouts">Workouts</a>
+            <a href="/workouts/new">Add Workout</a>
+        </nav>
+    </header>
 
-    <form th:action="@{/workouts}" th:object="${workout}" method="post">
-        <label>Date:</label>
-        <input type="date" th:field="*{workoutDate}" required>
-        <p class="error" th:if="${#fields.hasErrors('workoutDate')}" th:errors="*{workoutDate}"></p>
+    <section class="panel form-panel">
+        <h2>Add New Workout</h2>
+        <p class="helper">Fill in the fields and press save.</p>
 
-        <label>Distance in meters:</label>
-        <input type="number" th:field="*{distance}" placeholder="2000" required>
-        <p class="error" th:if="${#fields.hasErrors('distance')}" th:errors="*{distance}"></p>
+        <form th:action="@{/workouts}" th:object="${workout}" method="post">
+            <label>Date</label>
+            <input type="date" th:field="*{workoutDate}" required>
+            <p class="error" th:if="${#fields.hasErrors('workoutDate')}" th:errors="*{workoutDate}"></p>
 
-        <label>Split (ex 2:05):</label>
-        <input type="text" th:field="*{split}" required>
-        <p class="error" th:if="${#fields.hasErrors('split')}" th:errors="*{split}"></p>
+            <label>Distance (meters)</label>
+            <input type="number" th:field="*{distance}" placeholder="2000" required>
+            <p class="error" th:if="${#fields.hasErrors('distance')}" th:errors="*{distance}"></p>
 
-        <label>Stroke rate:</label>
-        <input type="number" th:field="*{strokeRate}" placeholder="26" required>
-        <p class="error" th:if="${#fields.hasErrors('strokeRate')}" th:errors="*{strokeRate}"></p>
+            <label>Split (example: 2:05)</label>
+            <input type="text" th:field="*{split}" required>
+            <p class="error" th:if="${#fields.hasErrors('split')}" th:errors="*{split}"></p>
 
-        <button type="submit">Save Workout</button>
-    </form>
+            <label>Stroke Rate</label>
+            <input type="number" th:field="*{strokeRate}" placeholder="26" required>
+            <p class="error" th:if="${#fields.hasErrors('strokeRate')}" th:errors="*{strokeRate}"></p>
+
+            <button type="submit">Save Workout</button>
+        </form>
+    </section>
 </div>
 </body>
 </html>

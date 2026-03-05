@@ -2,35 +2,46 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Workouts</title>
+    <title>Trackerg34 Workouts</title>
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<div class="box">
-    <h2>Workout List</h2>
-    <p><a href="/workouts/new">Add Workout</a> | <a href="/">Home</a></p>
+<div class="page-wrap">
+    <header class="topbar">
+        <h1>Trackerg34</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/workouts">Workouts</a>
+            <a href="/workouts/new">Add Workout</a>
+        </nav>
+    </header>
 
-    <!-- table of workouts from database -->
-    <table th:if="${!workouts.isEmpty()}">
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Distance (m)</th>
-            <th>Split</th>
-            <th>Stroke Rate</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="workout : ${workouts}">
-            <td th:text="${workout.workoutDate}"></td>
-            <td th:text="${workout.distance}"></td>
-            <td th:text="${workout.split}"></td>
-            <td th:text="${workout.strokeRate}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <section class="panel">
+        <h2>Workout Log</h2>
+        <p class="helper">Newest rows are shown first.</p>
 
-    <p th:if="${workouts.isEmpty()}" class="empty-msg">No workouts yet. Add your first one.</p>
+        <!-- table of workouts from database -->
+        <table th:if="${!workouts.isEmpty()}">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Distance (m)</th>
+                <th>Split</th>
+                <th>Stroke Rate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="workout : ${workouts}">
+                <td th:text="${workout.workoutDate}"></td>
+                <td th:text="${workout.distance}"></td>
+                <td th:text="${workout.split}"></td>
+                <td th:text="${workout.strokeRate}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p th:if="${workouts.isEmpty()}" class="empty-msg">No workouts yet. Add your first one.</p>
+    </section>
 </div>
 </body>
 </html>
